@@ -1,26 +1,32 @@
 import { useState } from "react"
 import {
     Card,
-    CardAction,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import {
+    Button
+} from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+// import react-tostify
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+
+
 export default function Accueil() {
     //state 
     const [nom, setnom] = useState("");
-    const [email, setemail] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
-    const [message, setmessage] = useState("");
+
 
     //comportement
     function formulaire() {
         if (nom === "" || email === "" || password === "") {
-            setmessage("tout les champs sont obligatoire")
+            toast.error("tout les champs sont obligatoire");
         } else {
-            setmessage(`bonjour ${nom},votre email est ${email},et votre mots de passe est ${password}`)
+            toast.success(`bonjour ${nom},votre email est ${email},et votre mots de passe est ${password}`)
         }
     }
 
@@ -28,26 +34,25 @@ export default function Accueil() {
 
     //render
     return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
-                <CardAction>Card Action</CardAction>
-            </CardHeader>
-            <CardContent>
-                <div>
-                    <h1>formulaire d'incription</h1>
-                    <input type="text" placeholder="nom" value={nom} onChange={(e) => setnom(e.target.value)} className="" />
-                    <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} className="" />
-                    <input type="password" placeholder="password" value={password} onChange={(e) => setpassword(e.target.value)} className="" />
-                    <button onClick={formulaire} className="">valider</button>
+        <div className="flex w-full h-screen justify-center items-center">
+            <Card>
+                <CardHeader>
+                    <CardTitle>formulaire d'incription</CardTitle>
+                    <ToastContainer />
+                </CardHeader>
+                <CardContent>
 
-                </div>
-            </CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
-            </CardFooter>
-        </Card>
+                    <div className="flex flex-col w-[300px] gap-8 ">
+                        <Input type="text" placeholder="nom" value={nom} onChange={(e) => setnom(e.target.value)}  />
+                        <Input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Input type="password" placeholder="password" value={password} onChange={(e) => setpassword(e.target.value)} />
+                        <Button onClick={formulaire} className="bg-amber-400">valider</Button>
+
+                    </div>
+                </CardContent>
+
+            </Card>
+        </div>
 
     )
 }
