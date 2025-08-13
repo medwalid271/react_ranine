@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function App() {
+export default function Formulaire() {
   const [nom, setNom] = useState("");
 
   const direBonjour = () => {
