@@ -1,27 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Accueil from './acc.jsx'
-import Navbar from './components/navbar.jsx'
-import Formulaire from './Form.jsx'
-import Carte from './cart.jsx'
-import App2 from './app2.jsx'
+
+import { Routes, Route, Link } from "react-router-dom";
+import Mass from "./mass";
+import Formulaire from "./info";
+import EnqueteHydraulique from "./enquete_de_satisfaction";
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      {/* <Navbar /> */}
-      {/* <Accueil /> */}
-      {/* <Formulaire/> */}
-      <App2/>
+    // <div>
+    //   {/* Menu de navigation */}
+    //   <nav className="text-black">
+    //     <Link to="/accueil">Accueil</Link> | 
+    //     <Link to="/about">À propos</Link>
+    //   </nav>
 
-      <Carte/>
+    //   {/* Définition des routes */}
+    //   <Routes>
+    //     <Route path="/accueil" element={<h1>Page d'accueil</h1>} />
+    //     <Route path="/about" element={<h1>À propos de nous</h1>} />
+    //   </Routes>
+    // </div>
 
-    </>
-  )
+    // <Mass/>
+    // <Formulaire/>
+    <EnqueteHydraulique/>
+  
+  
+  );
 }
 
-export default App
+export default App;
+
